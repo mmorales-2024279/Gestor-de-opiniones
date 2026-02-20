@@ -17,4 +17,10 @@ router.post(
     createField
 )
 
+router.put(
+    '/:id',
+    validateUpdateField,
+    updateField
+);
+
 export default router;

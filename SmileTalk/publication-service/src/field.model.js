@@ -4,46 +4,35 @@ import { Schema, model } from 'mongoose';
 
 const fieldSchema = new Schema(
     {
-    fieldName: {
-        type: String,
-        required: [true, 'El nombre del campo es requerido'],
-        trim: true,
-        maxLength: [100, 'El nombre no puede exceder 100 caracteres'],
-    },
-    fieldType: {
-        type: String,
-        required: [true, 'El tipo de campo es requerido'],
-        enum: {
-        values: ['NATURAL', 'SINTETICA', 'CONCRETO'],
-        message: 'Tipo de superficie no válida',
-    },
-    },
-    capacity: {
-        type: String,
-        required: [true, 'La capacidad es requerida'],
-        enum: {
-        values: ['FUTBOL_5', 'FUTBOL_7', 'FUTBOL_11'],
-        message: 'Capacidad no válida',
+        title: {
+            type: String,
+            required: [true, 'El titulo es requerido'],
+            trim: true,
+            maxLength: [100, 'El titulo no puede exceder 100 caracteres'],
         },
-    },
-    pricePerHour: {
-        type: Number,
-        required: [true, 'El precio por hora es requerido'],
-        min: [0, 'El precio debe ser mayor o igual a 0'],
-    },
-    description: {
-        type: String,
-        trim: true,
-        maxLength: [500, 'La descripción no puede exceder 500 caracteres'],
-    },
-    photo: {
-        type: String,
-        default: 'fields/kinal_sports_taad5e',
-    },
-    isActive: {
-        type: Boolean,
-        default: true,
-    },
+        category: {
+            type: String,
+            required: [true, 'La categoria es requerida'],
+            trim: true,
+            maxLength: [100, 'La categoria no puede exceder 100 caracteres'],
+        },
+        text: {
+            type: String,
+            trim: true,
+        },
+        date: {
+            type: Date,
+            default: Date.now
+        },
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
+        },
+        photo: {
+            type: String,
+            default: 'fields/kinal_sports_taad5e',
+        },
     },
     {
         timestamps: true,
